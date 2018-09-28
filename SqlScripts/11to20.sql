@@ -1,0 +1,176 @@
+--connect DEV/PASSWORD
+
+-- ILC Database Setup
+-- Upgrades ILC schema to version 2.0
+
+define ILC_SCHEMA=ILC;
+
+
+ALTER TABLE &ILC_SCHEMA .IVR_SERVER
+ADD (AUTH_CHECKER VARCHAR2(50 BYTE));
+/
+ALTER TABLE &ILC_SCHEMA .IVR_SERVER
+ADD (SCHEDULE_CRON VARCHAR2(50 BYTE));
+/
+ALTER TABLE &ILC_SCHEMA .IVR_PROJECT
+ADD (SCHEDULE_CRON VARCHAR2(50 BYTE));
+/
+CREATE TABLE &ILC_SCHEMA .ILC_INSTANCE
+(
+  SCHEDULE_CRON              VARCHAR2(50)       NOT NULL,
+  OUT_CHANNEL_NUM            NUMBER(3),
+  TERMINATOR_KEY             CHAR(1),
+  TIMESPAN                   NUMBER(5),
+  COMMON_RECIPIENT_EMAIL     VARCHAR2(2000)     NOT NULL,
+  TIME_BETWEEN_VERIFICATION  NUMBER(5),
+  MAX_ATTEMPTS               NUMBER(3),
+  FROM_EMAIL                 VARCHAR2(2000),
+  SILENCE_TIMEOUT            NUMBER(3),
+  RECORD_DURATION            NUMBER(5),
+  LOGIN_SILENCE_TIMEOUT      NUMBER(5),
+  SUMMARY_REPORT_CRON        VARCHAR2(50),
+  SUMMARY_RECIPIENT_EMAIL    VARCHAR2(2000),
+  JOB_MISFIRE_THRESHOLD		 NUMBER(5),
+  VERSION 					 NUMBER(38) DEFAULT 1 NOT NULL
+)
+/* TABLESPACE &ILC_SCHEMA PCTFREE 10 INITRANS 1 MAXTRANS 255 STORAGE ( INITIAL 64K BUFFER_POOL DEFAULT) LOGGING */
+/
+delete from &ILC_SCHEMA .ILC_INSTANCE;
+/
+insert into &ILC_SCHEMA .ILC_INSTANCE (SCHEDULE_CRON, TERMINATOR_KEY, COMMON_RECIPIENT_EMAIL)
+values
+(
+  '0 0 * * * ?',
+  '#',
+  'please@change.it'
+)
+/
+
+CREATE OR REPLACE PROCEDURE &ILC_SCHEMA .INITIALIZE_CHECKLIST(
+		TIME_SPAN IN NUMBER, 
+		WAS_MISFIRED IN NUMBER, 
+		PROJECTS_LIST IN VARCHAR2,
+		A_REPORT_ID OUT NUMBER,
+		A_START_TIME OUT DATE,
+		PREV_START_TIME OUT DATE,
+		IS_NEW_SESSION OUT NUMBER) AS
+BEGIN
+	IS_NEW_SESSION := 0;
+	SELECT REPORT_ID, START_TIME INTO A_REPORT_ID, A_START_TIME 
+		FROM &ILC_SCHEMA .SERVICE_VERIFICATION_SESSION FOR UPDATE;
+	IF A_START_TIME < SYSDATE - TIME_SPAN THEN
+		IS_NEW_SESSION := 1;
+		PREV_START_TIME := A_START_TIME;
+		SELECT &ILC_SCHEMA .SQ_SERVICE_VERIFICATION.NEXTVAL INTO A_REPORT_ID FROM DUAL;
+		SELECT SYSDATE INTO A_START_TIME FROM DUAL;
+		IF WAS_MISFIRED = 0 THEN
+			INSERT INTO &ILC_SCHEMA .SERVICE_VERIFICATION(ITEM_ID, REPORT_ID, ATTEMPTS, STATUS, TIME)
+				(SELECT ITEM_ID, &ILC_SCHEMA .SQ_SERVICE_VERIFICATION.CURRVAL, 0, 'AWAITING', A_START_TIME FROM &ILC_SCHEMA .SERVICE_INFO
+					INNER JOIN (
+						SELECT TO_NUMBER(substr(PROJECTS_LIST, Num + 1, instr(PROJECTS_LIST, ',', Num + 1) - Num - 1)) AS Value
+						FROM   (
+							select L1.v * 4096 + L2.v * 512 + L3.v * 64 + L4.v * 8 + L5.v + 1 as Num 
+							from 
+								(select 0 as v from dual union all select 1 from dual union all select 2 from dual union all select 3 from dual 
+									union all select 4 from dual union all select 5 from dual union all select 6 from dual union all select 7 from dual) L1,
+								(select 0 as v from dual union all select 1 from dual union all select 2 from dual union all select 3 from dual 
+									union all select 4 from dual union all select 5 from dual union all select 6 from dual union all select 7 from dual) L2,
+								(select 0 as v from dual union all select 1 from dual union all select 2 from dual union all select 3 from dual 
+									union all select 4 from dual union all select 5 from dual union all select 6 from dual union all select 7 from dual) L3,
+								(select 0 as v from dual union all select 1 from dual union all select 2 from dual union all select 3 from dual 
+									union all select 4 from dual union all select 5 from dual union all select 6 from dual union all select 7 from dual) L4,
+								(select 0 as v from dual union all select 1 from dual union all select 2 from dual union all select 3 from dual 
+									union all select 4 from dual union all select 5 from dual union all select 6 from dual union all select 7 from dual) L5
+							) s
+
+						WHERE  substr(PROJECTS_LIST, Num, 1) = ',' AND Num < length(PROJECTS_LIST)
+					) PROJECTS ON SERVICE_INFO.IVR_PROJECT_ID = PROJECTS.Value
+					WHERE SERVICE_INFO.ENABLED != 0
+				);
+			UPDATE &ILC_SCHEMA .SERVICE_VERIFICATION_SESSION 
+				SET REPORT_ID = &ILC_SCHEMA .SQ_SERVICE_VERIFICATION.CURRVAL, START_TIME = A_START_TIME, IS_REPORTED=0;
+		ELSE
+			UPDATE &ILC_SCHEMA .SERVICE_VERIFICATION_SESSION 
+				SET REPORT_ID = &ILC_SCHEMA .SQ_SERVICE_VERIFICATION.CURRVAL, START_TIME = A_START_TIME, IS_REPORTED=1;
+		END IF;
+	END IF;
+	COMMIT;
+END INITIALIZE_CHECKLIST;
+/
+
+CREATE OR REPLACE TRIGGER &ILC_SCHEMA .TR_IVR_SERVER_ID BEFORE
+INSERT
+OR UPDATE OF "IVR_SERVER_ID" ON &ILC_SCHEMA .IVR_SERVER REFERENCING OLD AS OLD NEW AS NEW FOR EACH ROW
+begin
+if :NEW.IVR_SERVER_ID is not null then
+raise_application_error(-20501, 'IVR_SERVER_ID Column read-only');
+end if;
+if inserting then
+select &ILC_SCHEMA .SQ_DATA.nextval into :NEW.IVR_SERVER_ID from DUAL;
+end if;
+end;
+/
+
+CREATE OR REPLACE TRIGGER &ILC_SCHEMA .TR_IVR_PROJECT_ID BEFORE
+INSERT
+OR UPDATE OF "IVR_PROJECT_ID" ON &ILC_SCHEMA .IVR_PROJECT REFERENCING OLD AS OLD NEW AS NEW FOR EACH ROW
+begin
+if :NEW.IVR_PROJECT_ID is not null then
+raise_application_error(-20501, 'IVR_PROJECT_ID Column read-only');
+end if;
+if inserting then
+select &ILC_SCHEMA .SQ_DATA.nextval into :NEW.IVR_PROJECT_ID from DUAL;
+end if;
+end;
+/
+
+CREATE OR REPLACE TRIGGER &ILC_SCHEMA .TR_IVR_SERVER_VERSION
+AFTER INSERT OR DELETE OR UPDATE ON &ILC_SCHEMA .IVR_SERVER
+BEGIN
+    UPDATE &ILC_SCHEMA .ILC_INSTANCE SET VERSION = VERSION + 1;
+END;
+/
+CREATE OR REPLACE TRIGGER &ILC_SCHEMA .TR_IVR_PROJECT_VERSION
+AFTER INSERT OR DELETE OR UPDATE ON &ILC_SCHEMA .IVR_PROJECT
+BEGIN
+    UPDATE &ILC_SCHEMA .ILC_INSTANCE SET VERSION = VERSION + 1;
+END;
+/
+-- We are interested only in enabled column changes here
+CREATE OR REPLACE TRIGGER &ILC_SCHEMA .TR_SERVICE_INFO_VERSION
+AFTER INSERT OR DELETE OR UPDATE ON &ILC_SCHEMA .SERVICE_INFO FOR EACH ROW
+DECLARE
+	PRAGMA AUTONOMOUS_TRANSACTION;
+BEGIN
+	IF (:OLD.ENABLED = 0 OR :OLD.ENABLED IS NULL) AND :NEW.ENABLED <> 0 
+			OR :OLD.ENABLED <> 0 AND (:NEW.ENABLED = 0 OR :NEW.ENABLED IS NULL) THEN
+		UPDATE &ILC_SCHEMA .ILC_INSTANCE SET VERSION = VERSION + 1
+			WHERE NOT EXISTS(SELECT 1 FROM &ILC_SCHEMA .SERVICE_INFO 
+				WHERE IVR_PROJECT_ID = :NEW.IVR_PROJECT_ID
+					AND ENABLED <> 0 AND ITEM_ID <> :NEW.ITEM_ID);
+	END IF;
+	COMMIT;
+END;
+/
+CREATE OR REPLACE TRIGGER &ILC_SCHEMA .TR_ILC_INSTANCE_VERSION
+BEFORE UPDATE ON &ILC_SCHEMA .ILC_INSTANCE FOR EACH ROW 
+BEGIN
+	IF :OLD.VERSION = :NEW.VERSION THEN
+		:NEW.VERSION := :NEW.VERSION + 1;
+	END IF;
+END;
+/
+CREATE OR REPLACE TRIGGER &ILC_SCHEMA .TR_ILC_INSTANCE_DEL
+BEFORE DELETE ON &ILC_SCHEMA .ILC_INSTANCE 
+BEGIN
+	raise_application_error(-20502, 'Deleting rows from ILC_INSTANCE not allowed');
+END;
+/
+CREATE OR REPLACE TRIGGER &ILC_SCHEMA .TR_ILC_INSTANCE_INS
+BEFORE INSERT ON &ILC_SCHEMA .ILC_INSTANCE 
+BEGIN
+	FOR X IN (SELECT 1 FROM &ILC_SCHEMA .ILC_INSTANCE) LOOP
+		raise_application_error(-20502, 'Only one ILC_INSTANCE row allowed');
+	END LOOP;
+END;
+/

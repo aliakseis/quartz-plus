@@ -1,0 +1,31 @@
+TD.VRightDivider 
+{		
+	BORDER-RIGHT: #ccc 1px solid;	
+}
+
+TD.VBottomDivider 
+{		
+	BORDER-BOTTOM: #ccc 1px solid;	
+}
+
+.statusFrame
+{
+	BACKGROUND: #d9e7fa;
+	font-family: Tahoma, sans-serif;
+	font-size: 8pt;
+	color: #4d4d4d; 
+	margin-top:0px;
+}
+
+.titleLabel
+{
+	font-weight: bold;
+}
+
+td.gridTitle
+{
+	font-family: Tahoma, sans-serif;
+	font-size: 10pt;
+	font-weight: bold;
+	color: #003399;	
+}

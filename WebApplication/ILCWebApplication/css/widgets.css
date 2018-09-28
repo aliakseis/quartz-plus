@@ -1,0 +1,80 @@
+/* WIDGETS
+------------------------------------------------------- */
+.rightColModule h3 {
+	font-size: 110%;
+	color: #003399;
+	padding: 6px 8px 13px 10px;
+	margin: 0px;
+}
+.rightColModule {
+	margin-bottom: 10px;
+	padding: 0px;
+}
+.rightColModule {
+	background:url(../images/rightCol_bottom.gif) no-repeat bottom left;
+	margin-bottom: 5px;
+	width: 200px;
+}
+.rightColModule h3{
+	background:url(../images/rightCol_top.gif) no-repeat top left;
+}
+.rightColModule h3 span{
+	float: right;
+	margin-top: -13px;
+}
+.rightColModule p{
+	padding: 3px 0px 0px 5px;
+	margin: 0px;
+}
+
+/* SEARCH BOX
+-------------------------------------------------------*/
+.searchBox {
+	margin-left: 5px;
+}
+/* LEFT NAV LINKS LIST
+------------------------------------------------------- */
+
+ul.moduleList {
+	display: block;
+	margin-top: -5px;
+	margin-left: 0px;
+	padding: 5px;
+}
+ul.moduleList li{
+	background: url(../images/icon_bullet.gif) no-repeat left top;
+	padding-left: 24px;
+	margin-left: 1px;
+	font-weight: bold;
+	padding-bottom: 8px;
+}
+ul.moduleList li a{
+	font-weight: normal;
+}
+
+/* LEFT MODULE
+------------------------------------------------------- */
+.leftModule p{
+	margin-top: -10px;
+}
+/* SITE ACTIVITY 
+------------------------------------------------------- */
+dl.activity {
+	width: 100%;
+	margin: 0px;
+	padding-bottom: 4px;
+}
+.activity dt {
+	width: 180px;
+	border-bottom: 1px dotted #ccc;
+	padding: 8px 3px 6px 5px;
+}
+.activity dd {
+	float: right;
+	margin-top: -18px;
+	padding-right: 2px;
+	font-weight: bold;
+	width: 20px;
+}
+
+

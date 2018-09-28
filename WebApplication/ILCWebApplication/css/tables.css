@@ -1,0 +1,145 @@
+/* NEW TABLE LAYOUT 11_17_08 */
+
+a.sortCol {
+	color: #fff;
+
+}
+table.tblStd  {
+	width: 100%;
+	border-top:1px solid #e3f1fe;
+	border-right:1px solid #e3f1fe;
+	font-family: Tahoma, sans-serif;
+	font-size: 8pt;
+
+}
+table.tblStd caption {
+	color: #9ba9b4;
+	font-size:.94em;
+	letter-spacing:.1em;
+	padding:0;
+	margin:1em 0 0 0;
+	margin-bottom:0;
+	caption-side:top;
+	text-align:center;
+}	
+
+table.tblStd th.colHdr {
+	font-weight:bold;
+	color: #fff;
+	text-align:left;
+	border-bottom: 1px solid #e3f1fe;
+	border-left:1px solid #e5eff8;
+	padding:.3em 1em;
+	background: #678fc2;
+}
+
+table.tblStd th {
+	font-weight:bold;
+	color: #fff;
+	text-align:left;
+	border-bottom: 1px solid #e3f1fe;
+	border-left:1px solid #e5eff8;
+	padding:.3em 1em;
+	background: #678fc2;
+}  
+
+table.tblStd td {
+	color:#4d4d4d;
+	border-bottom: 1px solid #e3f1fe;
+	border-left:1px solid #e5eff8;
+	padding:.3em 1em;
+}
+tr.colTotals {
+	font-weight:bold;
+	color: #4d4d4d;
+	text-align:left;
+	border-bottom: 1px solid #e3f1fe;
+	border-left:1px solid #e5eff8;
+	padding:.3em 1em;
+	background: #d9e7fa;
+}
+/* TEMPLATE SMALL TABLE
+------------------------------------------------------- */
+
+table.tblSm {
+	width: 200px;
+	padding: 2px;	
+}
+table.tblSm td{
+	border-bottom: 1px dotted #ccc;
+	padding: 4px;		
+}
+table.tblSm th{
+	background-color: #ccc;	
+	padding: 4px;	
+	color: #fff;	
+}
+table.tblSm td.em{
+	font-weight: bold;
+	text-align: right;	
+}
+
+/* ROW HOVER
+------------------------------------------------------- */
+tr.dark {
+	background:#F7FBFE;
+}
+tr.light {
+	background-color: #fff;
+}
+tr.selected {
+	background-color: #FFFFCC;
+}
+tr.hover {
+	background-color: #FFFFCC;
+}
+
+/* PAGINATION
+------------------------------------------------------- */	
+.tblPaging {
+	margin: 1px 0px 1px 1px;
+	background:   #678fc2;
+	padding: 5px;
+	text-align: right;
+	clear: both; 
+	color: #fff;
+}
+.tblPaging2 span{
+	margin-top: -22px;
+	float: right;
+	clear: both;  
+}
+.tblPaging2 {
+	margin: 1px 0px 1px 1px;
+	background:  #a6c7f4;
+	padding: 5px;
+	text-align: left; 
+	clear: both; 
+}
+/* ACTIONS
+------------------------------------------------------- */	
+.tblActions {
+
+	padding: 4px;
+	text-align: left;
+	clear: both; 
+	background: #a6c7f4;
+}
+/* LOGIN PAGE
+------------------------------------------------------- */	
+td.logoCell
+{
+	width: 30%;
+	vertical-align: top;	
+}
+td.logoCell h1
+{
+	color: #34679a;
+	padding-top: 5px;
+	padding-bottom: 0px;
+}
+td.logoCell h1.shifted
+{
+	padding-top: 0px;
+	padding-left: 50px;
+}

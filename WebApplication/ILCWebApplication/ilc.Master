@@ -1,0 +1,209 @@
+﻿<%@ Import Namespace="ILCWebApplication.ILCSettings"%>
+<%@ Import Namespace="ILCWebApplication"%>
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="ilc.master.cs" Inherits="ILCWebApplication.ilc" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Drug Accountability</title>
+<link rel="stylesheet" href="~/css/base.css" type="text/css" runat="server" />
+<style type="text/css" media="screen">
+/* <![CDATA[ */
+   @import url(<%= ResolveClientUrl("~/css/add_tmp.css") %>);    
+   @import url(<%= ResolveClientUrl("~/css/base.css") %>);    
+   @import url(<%= ResolveClientUrl("~/css/tables.css") %>);    
+   @import url(<%= ResolveClientUrl("~/css/widgets.css") %>);    
+   @import url(<%= ResolveClientUrl("~/css/tabs.css") %>);    
+   @import url(<%= ResolveClientUrl("~/css/menus.css") %>);    
+   @import url(<%= ResolveClientUrl("~/css/forms.css") %>);  
+   @import url(<%= ResolveClientUrl("~/css/home_calendar.css") %>);  
+/* ]]> */
+</style>
+</head>
+
+<body runat="server" id="body">
+<form id="form1" runat="server">
+<div id="shellTop"></div>
+<div id="shell">
+<!-- BEGIN MASTHEAD -->
+   <div id="masthead">
+		<div class="headerTitle"><h1><%= ConstExpressions.GetWebApplicationName() %></h1></div>
+			<ul id="headerInfo">			    
+				<li>Welcome,&nbsp;<span><asp:LoginName ID="LoginName1" runat="server" /></span>&nbsp;|&nbsp;<asp:LoginStatus ID="LoginStatus1" runat="server" LogoutText="Log Out" LoginText="Log In" /></li>
+	   		</ul>
+	</div>
+<!-- end masthead -->
+<!-- BEGIN TOP GLOBAL MENU -->
+<div class="menu">		
+</div>
+<!-- end top global menu -->
+<div id="shellBody">	
+<!-- BEGIN BREAD CRUMB ROW -->
+	<div class="bcrumbRow">
+		<div class="bcrumb">			
+            <asp:SiteMapPath ID="SiteMapPath1" runat="server">
+            </asp:SiteMapPath>
+		</div>
+	</div>
+<!-- end Bread Crumb row -->
+<!-- BEGIN LEFT SIDE -->
+	<div class="leftCol">
+	   
+     
+	
+		
+	<h3>Manage</h3>
+        <asp:TreeView ID="TreeView1" style="margin-left:10px" runat="server" DataSourceID="SiteMapDataSource1" ShowExpandCollapse="False">
+        </asp:TreeView>
+        <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" />                
+        <br />        
+        <br />
+    
+
+        
+    <h3>Current Status</h3>        
+        <div id="serviceStatus" style="height: 250px; margin-left: 10px; margin-right: 10px;">
+        <!--Getting service status...-->
+        
+        <% 
+            IlcStatusData ilcStatusDatadata = GetStatusData();
+            if (ilcStatusDatadata != null && StatusHandler.GetServiceStatus() != ConstExpressions.SERVICE_STATUS_STARTED)
+                ilcStatusDatadata.currServiceState = ConstExpressions.WORK_STATUS_IDLE;
+        %>
+        
+        <span id="Label2" class="titleLabel">Service status:</span>
+        <br /> <span id="lblServiceStatus"><%=StatusHandler.GetServiceStatus()%></span>
+        <br /><input id="btnStartStop" type="button" value="<%= ServiceControlHandler.GetInitialStartStopText() %>" onclick='btnStartStop_Click(this)'  style="margin-left:30px;width:80px" <%= ServiceControlHandler.GetInitialStartStopStatus() %>/>
+        <br />
+        <span id="Label8" class="titleLabel">Service state:</span>
+        <br /><span id="lblServiceState"><%= Field(ilcStatusDatadata, delegate(IlcStatusData data) { return data.currServiceState; } ) %></span>
+        <br /><input id="btnQuickCheck" type="button" value="QuickCheck" onclick='btnQCheck_Click()' style="margin-left:30px;width:80px"  <%= ServiceControlHandler.GetInitialQuickCheckStatus() %>/>    
+        <br />
+        <span id="Label6" class="titleLabel">Last run time:</span>
+        <br /><span id="lblLastRun"><%= Field(ilcStatusDatadata, delegate(IlcStatusData data) { return data.lastCheckDate; } ) %></span><br /><br />
+        <span id="Label1" class="titleLabel">Info updated at:</span>
+        <br /><span id="lblUpdateTime"><%=DateTime.Now%></span><br /><br />
+        <span id="Label3" class="titleLabel">Administrator version:</span>
+        <br /><asp:Label ID="lblVersionState" runat="server"></asp:Label>
+                
+        </div>
+        <br /> 
+	</div>
+<!-- end left side 
+ BEGIN BODY -->
+	<div class="bodyColLg">
+	
+			<h1 style="width:800px">
+			<asp:ContentPlaceHolder ID="PlaceHolderPageTitle" runat="server">
+            </asp:ContentPlaceHolder>
+			</h1>			
+			<asp:ContentPlaceHolder ID="PlaceHolderBody" runat="server">
+            </asp:ContentPlaceHolder>
+    
+	</div>	
+</div>
+<!-- end body -->
+<!-- BEGIN RIGHT SIDE -->
+<!-- end right side -->
+<!-- BEGIN FOOTER -->
+<div id="footer" class="clearthis">
+	<span>&copy;2009 PAREXEL International<sup>&reg;</sup>. All rights reserved. A PAREXEL<sup>&reg;</sup> Company.</span>
+</div>
+<!-- end footer -->		
+</div>
+
+<div id="shellBottom"></div>
+<script type="text/javascript">
+
+function createXMLHttpRequest() {
+   try { return new XMLHttpRequest(); } catch(e) {}
+   try { return new ActiveXObject("Microsoft.XMLHTTP"); } catch (e) {}
+   try { return new ActiveXObject("Msxml2.XMLHTTP"); } catch (e) {}
+   return null;
+}
+
+function updateStatus() {
+    var xmlhttp = createXMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {   
+        if (xmlhttp.readyState == 4) {   
+            xmlhttp.onreadystatechange = new Function;
+            var arr = xmlhttp.responseText.split(',');
+            if (arr && arr.length == 4) {
+                el = document.getElementById('lblServiceStatus'); 
+                el.innerHTML = arr[0];
+                el = document.getElementById('lblLastRun'); 
+                el.innerHTML = arr[1];
+                el = document.getElementById('lblServiceState'); 
+                el.innerHTML = arr[2];
+                el = document.getElementById('lblUpdateTime'); 
+                el.innerHTML = arr[3];   
+                                
+                document.getElementById('btnStartStop').disabled = false;                
+                if (arr[0] == '<%= ConstExpressions.SERVICE_STATUS_STARTED %>')
+                {
+                    document.getElementById('btnStartStop').value = '<%= ConstExpressions.STOP_BUTTON_TEXT %>';
+                    document.getElementById('btnQuickCheck').disabled = !(arr[2] == '<%= ConstExpressions.WORK_STATUS_IDLE %>'); 
+                }
+                else if (arr[0] == '<%= ConstExpressions.SERVICE_STATUS_STOPPED %>')
+                {
+                    document.getElementById('btnStartStop').value = '<%= ConstExpressions.START_BUTTON_TEXT %>';
+                    document.getElementById('btnQuickCheck').disabled = true;
+                }
+                else
+                {
+                    document.getElementById('btnStartStop').value = '<%= ConstExpressions.PAUSED_BUTTON_TEXT %>'; 
+                    document.getElementById('btnStartStop').disabled = true;  
+                    document.getElementById('btnQuickCheck').disabled = true;
+                }
+                
+            }
+        }  
+    };   
+    xmlhttp.open("GET", "<%= ResolveClientUrl("~/StatusHandler.aspx") %>",      true);   
+    xmlhttp.send(null);   
+}
+
+
+function btnQCheck_Click()
+{    
+    if (!confirm("Are you sure you would like to run the lines check session?"))
+        return;
+        
+    document.getElementById('btnQuickCheck').disabled = true;
+    var xmlhttp = createXMLHttpRequest();
+    
+    xmlhttp.open("GET", "<%= ResolveClientUrl("~/ServiceControlHandler.aspx?btn=3") %>", true);   
+    xmlhttp.send(null);
+}
+
+
+function btnStartStop_Click(caller)
+{    
+    var name = caller.value;
+    
+    if (!confirm("Are you sure you would like to " + 
+            ((name == '<%= ConstExpressions.START_BUTTON_TEXT %>')? "start" : "stop") +
+            " the Line Checker?"))
+        return;
+        
+    caller.disabled = true;
+    document.getElementById('btnQuickCheck').disabled = true;
+    
+    var xmlhttp = createXMLHttpRequest();
+    
+    if (name == '<%= ConstExpressions.START_BUTTON_TEXT %>')
+        xmlhttp.open("GET", "<%= ResolveClientUrl("~/ServiceControlHandler.aspx?btn=1") %>", true);   
+    else if (name = '<%= ConstExpressions.STOP_BUTTON_TEXT %>')
+        xmlhttp.open("GET", "<%= ResolveClientUrl("~/ServiceControlHandler.aspx?btn=2") %>", true);   
+    
+    xmlhttp.send(null);
+}
+
+</script>
+</form>
+</body>
+</html>
+
+

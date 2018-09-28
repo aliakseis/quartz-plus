@@ -1,0 +1,154 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="15.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D112306A-E6B5-48E4-A8C5-F493DA43FE97}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ILC_ControlPanel</RootNamespace>
+    <AssemblyName>ILC_ControlPanel</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ActivityDAO.cs" />
+    <Compile Include="ControlPanelScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ControlPanelScreen.Designer.cs">
+      <DependentUpon>ControlPanelScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPanelTabs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DatabaseChecker.cs" />
+    <Compile Include="Installer1.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Installer1.Designer.cs">
+      <DependentUpon>Installer1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LogSettings.cs" />
+    <Compile Include="Program.cs">
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ControlPanelScreen.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ControlPanelScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Installer1.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Installer1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ServiceProgressForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ServiceProgressForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="ServiceActivity.cs" />
+    <Compile Include="ServiceProgressForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ServiceProgressForm.Designer.cs">
+      <DependentUpon>ServiceProgressForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SmoothProgressBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SmoothProgressBar.Designer.cs">
+      <DependentUpon>SmoothProgressBar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\DiskInfo.cs" />
+    <Compile Include="Utils\FastDirectoryEnumerator.cs" />
+    <Compile Include="Utils\FilesCleaner.cs" />
+    <Compile Include="Utils\ServiceInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\FormRunHS.BMP" />
+    <Content Include="Images\Pending.bmp" />
+    <Content Include="Images\Started.bmp" />
+    <Content Include="Images\Stopped.bmp" />
+    <Content Include="Images\ILC_CP_PAUSED.ico" />
+    <Content Include="Images\ILC_CP_STOPPED.ico" />
+    <Content Include="Images\ILC_CP.ICO" />
+    <Content Include="Images\ILC_CP_RUNNING.ico" />
+    <None Include="Images\ThumbnailViewHS.bmp" />
+    <None Include="Images\StopHS.bmp" />
+    <None Include="Images\RestartHS.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Utils\Utils.csproj">
+      <Project>{241B21B3-6B47-4175-9883-0B7A39C5B0AE}</Project>
+      <Name>Utils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>copy "$(ProjectDir)\greeting.wav" "$(TargetDir)"</PostBuildEvent>
+  </PropertyGroup>
+</Project>

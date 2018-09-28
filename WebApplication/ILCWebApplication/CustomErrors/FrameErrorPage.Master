@@ -1,0 +1,41 @@
+<%@ Master Language="C#" AutoEventWireup="true" Codebehind="FrameErrorPage.master.cs"
+    Inherits="ILCWebApplication.CustomErrors.FrameErrorPage" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Untitled Page</title>
+    <style type="text/css" media="screen">
+        h1 {
+	        font-size: 14pt;
+	        font-weight: bold;
+	        color: #003399;
+	        margin: 0px;
+	        padding: 5px;
+	        font-family: Tahoma, sans-serif;
+        }
+        #errorBody {
+        	FONT-SIZE: 8pt;	            
+            COLOR: #4d4d4d;	
+            FONT-FAMILY: Tahoma, sans-serif;	            
+        }
+        
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div id="errorBody">
+            <div>
+                <h1>
+                    <asp:ContentPlaceHolder ID="PlaceHolderPageTitle" runat="server">
+                    </asp:ContentPlaceHolder>
+                </h1>
+                <div style="padding-top: 20px; padding-left: 20px;">
+                    <asp:ContentPlaceHolder ID="PlaceHolderBody" runat="server">
+                        Please contact your system administrator.
+                    </asp:ContentPlaceHolder>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

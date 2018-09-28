@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2035
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ILCWebApplication", "ILCWebApplication\ILCWebApplication.csproj", "{629FB920-E594-4EB1-A242-5CE15E400F48}"
+	ProjectSection(ProjectDependencies) = postProject
+		{241B21B3-6B47-4175-9883-0B7A39C5B0AE} = {241B21B3-6B47-4175-9883-0B7A39C5B0AE}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utils", "..\Utils\Utils.csproj", "{241B21B3-6B47-4175-9883-0B7A39C5B0AE}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+	EndProjectSection
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+	EndProjectSection
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "IlcWebSetup", "IlcWebSetup\IlcWebSetup.vdproj", "{A2D57DFA-8D0A-49C8-8B1D-0CA56815E330}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{629FB920-E594-4EB1-A242-5CE15E400F48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{629FB920-E594-4EB1-A242-5CE15E400F48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{629FB920-E594-4EB1-A242-5CE15E400F48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{629FB920-E594-4EB1-A242-5CE15E400F48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{241B21B3-6B47-4175-9883-0B7A39C5B0AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{241B21B3-6B47-4175-9883-0B7A39C5B0AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{241B21B3-6B47-4175-9883-0B7A39C5B0AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{241B21B3-6B47-4175-9883-0B7A39C5B0AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2D57DFA-8D0A-49C8-8B1D-0CA56815E330}.Debug|Any CPU.ActiveCfg = Debug
+		{A2D57DFA-8D0A-49C8-8B1D-0CA56815E330}.Debug|Any CPU.Build.0 = Debug
+		{A2D57DFA-8D0A-49C8-8B1D-0CA56815E330}.Release|Any CPU.ActiveCfg = Release
+		{A2D57DFA-8D0A-49C8-8B1D-0CA56815E330}.Release|Any CPU.Build.0 = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {70734663-4EBC-4B15-A7A1-748B6243841B}
+	EndGlobalSection
+EndGlobal

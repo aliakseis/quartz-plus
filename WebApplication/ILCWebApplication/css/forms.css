@@ -1,0 +1,84 @@
+/* FORMS FORMATTING
+------------------------------------------*/
+
+select{
+	font-size: 100%;
+	letter-spacing: normal;
+	font-weight: normal;
+}
+
+input, textarea{
+	font-family:arial;
+	font-size: 100%;
+	letter-spacing: normal;
+	font-weight: normal;
+}
+
+
+label {  
+display: block;
+vertical-align: top;
+padding-left: 5px;
+}
+label.inline {  
+display: inline;
+padding-left: 5px;
+}
+fieldset { 
+margin: 5px 0 0 0;  
+padding: 10px;
+border: 1px solid #ccc;
+}
+fieldset.noBorder { 
+
+border: 0px;
+}
+legend {  
+color: #4d4d4d;  
+font-weight: bold;
+font-size: 100%;
+margin-top: 0px;
+
+}
+
+fieldset ol {  
+padding-left: 8px;
+margin-left: 9px;
+list-style: none;
+
+}
+fieldset li {  
+padding-bottom: 15px;
+
+}
+
+fieldset li.idComment {  
+padding-bottom: 2px;
+
+}
+/* FORMS LAYOUT
+------------------------------------------*/
+div.row {
+  clear: both;
+  padding-top: 5px;
+  width: 350px;
+    margin-left: 10px;
+  }
+div.row span.label {
+  float: left;
+  width: 100px;
+  text-align: right;
+
+  }
+div.row span.formw {
+  float: right;
+  width: 235px;
+  text-align: left;
+  }
+  
+  td.EditLabel
+  {
+	padding-right:10px;
+	text-align:right
+  }
+

@@ -1,0 +1,71 @@
+td.calTop { font-family: Tahoma,sans-serif; background-color: #678fc2; font-size: 11px; font-weight: bold; color: #ffffff; }
+td.calWeek { font-family: Tahoma,sans-serif; background-color: #dddddd; font-size: 10px; color: #678fc2; }
+td.calDay { font-family: Tahoma,sans-serif; background-color: #ffffff; font-size: 10px; color: #000000; }
+td.calToday { font-family: Tahoma,sans-serif; background-color: #6699cc; font-size: 10px; color: #ffffff; }
+td.calSelected { font-family: Tahoma,sans-serif; background-color: #dddddd; font-size: 10px; color: #000000; }
+a.calLink { font-family: Tahoma,sans-serif; font-size: 10px; color: #000000; text-decoration: none; }
+a.calLink:hover { color: #678fc2; }
+
+a.calLinkToday { font-family: Tahoma,sans-serif; font-size: 10px; color: #ffffff; text-decoration: none; }
+a.calLinkToday:hover { color: #dddddd; }
+
+a.calLinkWhite { color: #ffffff; text-decoration: none; }
+a.calLink2 { font-family: Tahoma,sans-serif; font-size: 11px; color: #888888; text-decoration: none; }
+a.calLink2:hover { color: #678fc2; }
+#miniCalDiv { position: relative; top: 0px; left: 0px; }
+
+.calInput { font-family: Tahoma,sans-serif; background-color: #ffffff; font-size: 10px; color: #000000; }
+
+.calPopup
+{
+	visibility: hidden;
+	position: absolute;
+	width: 161px;
+	z-index: 1000;
+	border-top-width: 0px;
+	border-bottom-width: 0px;
+	border-left-width: 2px;
+	border-right-width: 2px;
+	border-color: #678fc2;
+	border-style: solid;
+}
+
+.calPopupExt
+{
+	visibility: hidden;
+	position: absolute;
+	width: 161px;
+	z-index: 1000;
+	top: 0;
+	left: 0;
+}
+
+.calBorder{
+	border-width: 1px;
+	border-color: #ccc;
+	border-style: solid;
+}
+
+.clockStyle
+{
+	visibility: hidden;
+	position: absolute;
+	width: 110px;
+	z-index: 1000;
+	background-color: #ffffff;
+}
+
+.clockBorder {border-color: #ccc;
+	border-style: solid;
+	border-width: 1px; }
+
+.clockText
+{
+	font-family: Tahoma,sans-serif;
+	font-weight: bold;
+	font-size: 14px;
+	color: #ffffff;
+}
+
+.clockBack { background-color: #678fc2; }
+a.clockLink { color: #ffffff; }

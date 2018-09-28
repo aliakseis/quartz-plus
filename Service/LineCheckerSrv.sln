@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2042
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{64CFFAEA-6368-4FF4-BB96-97DB6B601E64}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LineCheckerSrv", "LineCheckerSrv\LineCheckerSrv.csproj", "{A50034B0-AFEB-422C-8F61-7C1B2472A597}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "IVRSLineCheckerSetup", "IVRSLineCheckerSetup\IVRSLineCheckerSetup.vdproj", "{71DD71F5-545B-4352-B552-425F24ABB25D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LineCheckSrvTestProject", "LineCheckSrvTestProject\LineCheckSrvTestProject.csproj", "{28BCD33E-F3E1-46D2-A08E-219AF3FEAEF1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ILC_ControlPanel", "ILC_Control\ILC_ControlPanel.csproj", "{D112306A-E6B5-48E4-A8C5-F493DA43FE97}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspirinLoginChecker", "plugins\AspirinLoginChecker\AspirinLoginChecker.csproj", "{722BF0C2-7A37-478E-BFBC-F9BA76E66445}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utils", "..\Utils\Utils.csproj", "{241B21B3-6B47-4175-9883-0B7A39C5B0AE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A50034B0-AFEB-422C-8F61-7C1B2472A597}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A50034B0-AFEB-422C-8F61-7C1B2472A597}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A50034B0-AFEB-422C-8F61-7C1B2472A597}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A50034B0-AFEB-422C-8F61-7C1B2472A597}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71DD71F5-545B-4352-B552-425F24ABB25D}.Debug|Any CPU.ActiveCfg = Debug
+		{71DD71F5-545B-4352-B552-425F24ABB25D}.Release|Any CPU.ActiveCfg = Release
+		{71DD71F5-545B-4352-B552-425F24ABB25D}.Release|Any CPU.Build.0 = Release
+		{28BCD33E-F3E1-46D2-A08E-219AF3FEAEF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28BCD33E-F3E1-46D2-A08E-219AF3FEAEF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28BCD33E-F3E1-46D2-A08E-219AF3FEAEF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28BCD33E-F3E1-46D2-A08E-219AF3FEAEF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D112306A-E6B5-48E4-A8C5-F493DA43FE97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D112306A-E6B5-48E4-A8C5-F493DA43FE97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D112306A-E6B5-48E4-A8C5-F493DA43FE97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D112306A-E6B5-48E4-A8C5-F493DA43FE97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{722BF0C2-7A37-478E-BFBC-F9BA76E66445}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{722BF0C2-7A37-478E-BFBC-F9BA76E66445}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{722BF0C2-7A37-478E-BFBC-F9BA76E66445}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{722BF0C2-7A37-478E-BFBC-F9BA76E66445}.Release|Any CPU.Build.0 = Release|Any CPU
+		{241B21B3-6B47-4175-9883-0B7A39C5B0AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{241B21B3-6B47-4175-9883-0B7A39C5B0AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{241B21B3-6B47-4175-9883-0B7A39C5B0AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{241B21B3-6B47-4175-9883-0B7A39C5B0AE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AB8D7722-903A-4282-8CDD-EC26379FB074}
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = LineCheckerSrv.vsmdi
+	EndGlobalSection
+EndGlobal

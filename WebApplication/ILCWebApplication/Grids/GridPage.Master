@@ -1,0 +1,37 @@
+<%@ Master Language="C#" AutoEventWireup="true" Codebehind="GridPage.master.cs" Inherits="ILCWebApplication.GridPage" %>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Cache-Control" content="no-cache" />
+    <title></title>
+    <style type="text/css" media="screen">
+/* <![CDATA[ */
+	@import url(<%= ResolveClientUrl("~/css/tables.css") %>);
+	@import url(<%= ResolveClientUrl("~/css/add_tmp.css") %>);
+/* ]]> */
+</style>
+
+    <script type="text/javascript" src="<%= ResolveClientUrl("~/scripts/popup.js") %>">
+    </script>
+
+</head>
+<body style="margin-top:0px;" onunload="closeModalWin()" onfocus="FocusModalWin()">
+    <form id="form1" runat="server">
+        <div>
+            <table style="width: 100%">
+                <tr>
+                    <td class="gridTitle" style="width: 70%">
+                        <asp:ContentPlaceHolder ID="PlaceHolderTitleCell" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </td>
+                    <td align="right" style="width: 30%">
+                        <asp:ContentPlaceHolder ID="PlaceHolderButtonCell" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </td>
+                </tr>
+            </table>
+            <asp:ContentPlaceHolder ID="PlaceHolderPageBody" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>

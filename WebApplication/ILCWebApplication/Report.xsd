@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="Report" targetNamespace="http://tempuri.org/Report.xsd" xmlns:mstns="http://tempuri.org/Report.xsd" xmlns="http://tempuri.org/Report.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="Report" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="Report" msprop:Generator_DataSetName="Report">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="ReportTable" msprop:Generator_UserTableName="ReportTable" msprop:Generator_RowDeletedName="ReportTableRowDeleted" msprop:Generator_TableClassName="ReportTableDataTable" msprop:Generator_RowChangedName="ReportTableRowChanged" msprop:Generator_RowClassName="ReportTableRow" msprop:Generator_RowChangingName="ReportTableRowChanging" msprop:Generator_RowEvArgName="ReportTableRowChangeEvent" msprop:Generator_RowEvHandlerName="ReportTableRowChangeEventHandler" msprop:Generator_TablePropName="ReportTable" msprop:Generator_TableVarName="tableReportTable" msprop:Generator_RowDeletingName="ReportTableRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="PROJECT" msprop:Generator_UserColumnName="PROJECT" msprop:Generator_ColumnPropNameInRow="PROJECT" msprop:Generator_ColumnVarNameInTable="columnPROJECT" msprop:Generator_ColumnPropNameInTable="PROJECTColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="SERVER" msprop:Generator_UserColumnName="SERVER" msprop:Generator_ColumnPropNameInRow="SERVER" msprop:Generator_ColumnVarNameInTable="columnSERVER" msprop:Generator_ColumnPropNameInTable="SERVERColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="PHONE" msprop:Generator_UserColumnName="PHONE" msprop:Generator_ColumnPropNameInRow="PHONE" msprop:Generator_ColumnVarNameInTable="columnPHONE" msprop:Generator_ColumnPropNameInTable="PHONEColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="USERID" msprop:Generator_UserColumnName="USERID" msprop:Generator_ColumnPropNameInRow="USERID" msprop:Generator_ColumnVarNameInTable="columnUSERID" msprop:Generator_ColumnPropNameInTable="USERIDColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="CHECKS" msprop:Generator_UserColumnName="CHECKS" msprop:Generator_ColumnPropNameInRow="CHECKS" msprop:Generator_ColumnVarNameInTable="columnCHECKS" msprop:Generator_ColumnPropNameInTable="CHECKSColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="SUCCESS" msprop:Generator_UserColumnName="SUCCESS" msprop:Generator_ColumnPropNameInRow="SUCCESS" msprop:Generator_ColumnVarNameInTable="columnSUCCESS" msprop:Generator_ColumnPropNameInTable="SUCCESSColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="FAILED" msprop:Generator_UserColumnName="FAILED" msprop:Generator_ColumnPropNameInRow="FAILED" msprop:Generator_ColumnVarNameInTable="columnFAILED" msprop:Generator_ColumnPropNameInTable="FAILEDColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="PERCENTSUCCESS" msprop:Generator_UserColumnName="PERCENTSUCCESS" msprop:Generator_ColumnPropNameInRow="PERCENTSUCCESS" msprop:Generator_ColumnVarNameInTable="columnPERCENTSUCCESS" msprop:Generator_ColumnPropNameInTable="PERCENTSUCCESSColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="LASTSUCCESS" msprop:Generator_UserColumnName="LASTSUCCESS" msprop:Generator_ColumnPropNameInRow="LASTSUCCESS" msprop:Generator_ColumnVarNameInTable="columnLASTSUCCESS" msprop:Generator_ColumnPropNameInTable="LASTSUCCESSColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="LASTFAILED" msprop:Generator_UserColumnName="LASTFAILED" msprop:Generator_ColumnPropNameInRow="LASTFAILED" msprop:Generator_ColumnVarNameInTable="columnLASTFAILED" msprop:Generator_ColumnPropNameInTable="LASTFAILEDColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

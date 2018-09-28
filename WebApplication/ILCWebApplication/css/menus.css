@@ -1,0 +1,135 @@
+
+
+
+ul.menuItems, ul#headerInfo, ul.tabs, ul.moduleList, ul.secondaryNav {
+	list-style: none;
+}
+/* TOP MENU
+------------------------------------------------------- */
+.menu {
+	letter-spacing: 1.0pt;
+	position: relative;
+	margin-left: 0px;
+	margin-top: -1px;
+	margin-right: 0px;
+	background: url(../images/bkg_menu2.png) repeat-x top left;
+	height: 34px;
+	margin-bottom: 0px;
+	width: 980px;
+}
+ul.menuItems {
+	padding-top: 7px;
+	margin-top: 0px;
+
+}
+ul.menuItems li{
+	display: inline;
+	margin: 0px 25px 0px -33px;
+	color: #fff;
+}
+ul.menuItems li a{
+	color: #fff;
+	text-decoration: none;
+	padding: 8px 18px 8px 6px;
+}
+ul.menuItems li a.sm:hover{
+	background: url(../images/btn_overSm.gif) no-repeat;
+	padding: 5px 18px 8px 6px;
+	text-decoration: none;
+}
+ul.menuItems li a.smOn{
+	background: url(../images/btn_overSm.gif) no-repeat;
+	padding: 5px 18px 8px 6px;
+	text-decoration: none;
+}
+ul.menuItems li a.smOn:hover{
+	background: url(../images/btn_overSm.gif) no-repeat;
+	padding: 5px 18px 8px 6px;
+	text-decoration: none;
+}
+ul.menuItems li a.med{
+	padding: 5px 18px 8px 6px;
+	text-decoration: none;
+}
+ul.menuItems li a.med:hover{
+	background: url(../images/btn_overMed.gif) no-repeat;
+	padding: 5px 18px 8px 6px;
+	text-decoration: none;
+}
+ul.menuItems li a.medOn{
+	background: url(../images/btn_overMed.gif) no-repeat;
+	padding: 5px 18px 8px 6px;
+	text-decoration: none;
+}
+ul.menuItems li a.medOn:hover{
+	background: url(../images/btn_overMed.gif) no-repeat;
+	padding: 5px 18px 8px 6px;
+	text-decoration: none;
+}
+ul.menuItems li a.lg{
+	padding: 5px 18px 8px 6px;
+	text-decoration: none;
+}
+ul.menuItems li a.lg:hover{
+	background: url(../images/btn_overLg.gif) no-repeat;
+	padding: 5px 18px 8px 6px;
+	text-decoration: none;
+}
+ul.menuItems li a.lgOn{
+	background: url(../images/btn_overLg.gif) no-repeat;
+	padding: 5px 18px 8px 6px;
+	text-decoration: none;
+}
+ul.menuItems li a.lgOn:hover{
+	background: url(../images/btn_overLg.gif) no-repeat;
+	padding: 5px 18px 8px 6px;
+	text-decoration: none;
+}
+ul.menuItems li a.xlg{
+	padding: 5px 18px 8px 6px;
+	text-decoration: none;
+}
+ul.menuItems li a.xlg:hover{
+	background: url(../images/btn_overXLg.gif) no-repeat;
+	padding: 5px 18px 8px 6px;
+	text-decoration: none;
+}
+ul.menuItems li a.xlgOn{
+	background: url(../images/btn_overXLg.gif) no-repeat;
+	padding: 5px 18px 8px 6px;
+	text-decoration: none;
+}
+ul.menuItems li a.xlgOn:hover{
+	background: url(../images/btn_overXLg.gif) no-repeat;
+	padding: 5px 18px 8px 6px;
+	text-decoration: none;
+}
+/* LEFT NAV
+------------------------------------------------------- */
+ul.secondaryNav {
+	display: block;
+	margin: 0;
+	padding-left: 5px;
+	background: #d9e7fa;
+}
+ul.secondaryNav li{
+	/* background: url(../images/icon_region.png) no-repeat left top;*/
+	padding-left: 4px;
+	margin-left: 1px;
+	font-weight: bold;
+	padding-bottom: 8px;
+}
+ul.secondaryNav li a{
+	font-weight: normal;
+}
+
+
+
+
+
+
+
+
+
+
+
